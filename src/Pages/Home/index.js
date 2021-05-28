@@ -8,7 +8,7 @@ import './style.css'
 
 export default function Principal() {
     const [frase, setFrase] = useState('')
-    const [response, setResponse] = useState({})
+    const [response, setResponse] = useState([{ sentimento: undefined }])
     const [loading, setLoading] = useState(false)
 
     async function resetData() {
@@ -19,8 +19,13 @@ export default function Principal() {
         if (frase !== '')
             try {
                 setLoading(true)
-                const response = await api.get()
-                setResponse(response.data)
+                const response = await api.get('/${' + frase + '}')
+                if (response.data.length > 0)
+                    setResponse(response.data)
+                else
+                    toast.warn("Não conseguimos analizar o tweet informado")
+
+                resetData()
                 setLoading(false)
             }
             catch {
@@ -57,6 +62,11 @@ export default function Principal() {
                             }
                         </button>
                     </form>
+                    {response.length > 0 &&
+                        <>
+                            {response[0].sentimento}
+                        </>
+                    }
                 </div>
                 <ToastContainer />
             </div>

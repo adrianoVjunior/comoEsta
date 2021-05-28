@@ -8,7 +8,7 @@ export default class Loader extends Component {
                 <SyncLoader
                     size={10}
                     margin={2}
-                    color={"rgb(148, 187, 233)"}
+                    color={"white"}
                     loading={this.props.loading}
                 />
             </>
