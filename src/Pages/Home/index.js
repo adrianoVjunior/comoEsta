@@ -63,9 +63,9 @@ export default function Principal() {
                         </button>
                     </form>
                     {response.length > 0 &&
-                        <>
+                        <div className="response">
                             {response[0].sentimento}
-                        </>
+                        </div>
                     }
                 </div>
                 <ToastContainer />
