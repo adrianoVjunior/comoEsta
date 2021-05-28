@@ -23,7 +23,7 @@ export default function Principal() {
                 if (response.data.length > 0)
                     setResponse(response.data)
                 else
-                    toast.warn("Não conseguimos analizar o tweet informado")
+                    toast.warn("Não conseguimos analisar o tweet informado")
 
                 resetData()
                 setLoading(false)
@@ -64,7 +64,9 @@ export default function Principal() {
                     </form>
                     {response.length > 0 &&
                         <div className="response">
-                            {response[0].sentimento}
+                            <span>
+                                {response[0].sentimento}
+                            </span>
                         </div>
                     }
                 </div>
