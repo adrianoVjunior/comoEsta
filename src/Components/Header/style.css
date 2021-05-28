@@ -8,4 +8,5 @@
     align-items: center;
     color: white;
     font-family: 'Courier New', Courier, monospace;
+    position: fixed;
 }
