@@ -8,6 +8,7 @@ import './style.css'
 
 export default function Principal() {
     const [frase, setFrase] = useState('')
+    const [response, setResponse] = useState({})
     const [loading, setLoading] = useState(false)
 
     async function resetData() {
@@ -19,14 +20,8 @@ export default function Principal() {
             try {
                 setLoading(true)
                 const response = await api.get()
-                if (response.data.auth === false) {
-                    setLoading(false)
-                    resetData()
-                    toast.error("Tivemos problemas na analise")
-                    return
-                }
+                setResponse(response.data)
                 setLoading(false)
-                console.log(response.data)
             }
             catch {
                 setLoading(false)
